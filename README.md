@@ -59,4 +59,4 @@ MIT
 
 ## Author Information
 
-This role was created in 2020 by [Hans Spaans](https://github.com/hspaans).
+This role was created in 2023 by [Terje Kvernes](https://github.com/terjekv) based a template from [Hans Spaans](https://github.com/hspaans/ansible-role-template).
