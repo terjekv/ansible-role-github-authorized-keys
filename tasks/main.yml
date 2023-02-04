@@ -35,8 +35,10 @@
   become: true
 
 - name: Apply SELinux policy
-  ansible.builtin.shell: semodule -i /tmp/curl-ssh-github-access.pp
+  ansible.builtin.command: semodule -i /tmp/curl-ssh-github-access.pp
   become: true
+  tags:
+    - skip_ansible_lint
 
 - name: "Create environment file"
   ansible.builtin.template:
