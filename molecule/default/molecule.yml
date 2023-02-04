@@ -1,13 +1,15 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: molecule/default/requirements.yml
 driver:
   name: docker
-#lint: |
-#  set -e
-#  yamllint `git ls-files '*.yaml' '*.yml'`
-#  ansible-lint
-#  flake8
+lint: |
+  set -e
+  yamllint `git ls-files '*.yaml' '*.yml'`
+  ansible-lint
+  flake8
 platforms:
   - name: centos-7
     image: "ghcr.io/hspaans/molecule-container-centos:7"
