@@ -32,11 +32,11 @@
     owner: root
     group: root
     mode: 0644
-  become: yes
+  become: true
 
 - name: Apply SELinux policy
   ansible.builtin.shell: semodule -i /tmp/curl-ssh-github-access.pp
-  become: yes
+  become: true
 
 - name: "Create environment file"
   ansible.builtin.template:
@@ -44,15 +44,15 @@
     dest: "{{ env_file }}"
     owner: root
     group: wheel
-    mode: '0600'
-  become: yes
+    mode: "0600"
+  become: true
 
 - name: "Pull the docker image"
   community.general.docker_image:
     name: "{{ docker_image }}:{{ docker_image_tag }}"
     source: pull
     state: present
-  become: yes
+  become: true
 
 - name: "Create container"
   community.general.docker_container:
@@ -67,4 +67,4 @@
     restart: yes
     restart_policy: "unless-stopped"
     env_file: "{{ env_file }}"
-  become: yes
+  become: true

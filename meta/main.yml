@@ -7,25 +7,26 @@ galaxy_info:
 
   license: MIT
 
-  min_ansible_version: 2.10
+  min_ansible_version: "2.10"
 
   platforms:
     - name: EL
       versions:
-        - 7
-        - 8
-        - 9
+        - "7"
+        - "8"
+        - "9"
     - name: Debian
       versions:
-        - 10
-        - 11
+        - "buster"
+        - "bookworm"
     - name: Fedora
       versions:
-        - 36
+        - "37"
     - name: Ubuntu
       versions:
-        - 18.04
-        - 20.04
+        - "bionic"
+        - "focal"
+        - "jammy"
 
   galaxy_tags:
     - github
@@ -34,4 +35,4 @@ galaxy_info:
     - keys
 
 dependencies:
-  - geerlingguy.docker
+  - role: geerlingguy.docker
