@@ -10,7 +10,7 @@ None.
 
 All role variables are unset to defer to the the defaults of [github-authorized-keys](https://github.com/terjekv/github-authorized-keys). Supported variables are:
 
-```` 
+````bash
 github_api_token
 github_organization
 github_admin_team_name
@@ -34,7 +34,7 @@ See the application [documentation](https://github.com/terjekv/github-authorized
 
 Required variables are:
 
-````
+````bash
 github_api_token
 github_organization
 github_admin_team_name or github_admin_team_id
@@ -46,12 +46,12 @@ github_admin_team_name or github_admin_team_id
 
 ## Example Playbook
 
-```yaml
+````yaml
 ---
 - hosts: servers
   roles:
     - { role: terjekv.github-authorized-keys, github_token: "42", github_team: "..." }
-```
+````
 
 ## License
 
