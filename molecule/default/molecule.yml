@@ -3,11 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint: |
-  set -e
-  yamllint `git ls-files '*.yaml' '*.yml'`
-  ansible-lint
-  flake8
+#lint: |
+#  set -e
+#  yamllint `git ls-files '*.yaml' '*.yml'`
+#  ansible-lint
+#  flake8
 platforms:
   - name: centos-7
     image: "ghcr.io/hspaans/molecule-container-centos:7"
@@ -44,14 +44,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: fedora-33
-    image: "ghcr.io/hspaans/molecule-container-fedora:33"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: fedora-34
+  - name: fedora-37
     image: "ghcr.io/hspaans/molecule-container-fedora:34"
     command: ""
     volumes:

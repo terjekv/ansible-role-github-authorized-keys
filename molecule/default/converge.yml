@@ -3,4 +3,3 @@
   hosts: all
   roles:
     - role: terjekv.github_authorized_keys
-    - role: geerlingguy.docker
