@@ -1,0 +1,70 @@
+---
+# tasks file for role
+- name: "Install docker via pip"
+  pip:
+    name: "docker"
+
+- name: "Verify that required variables are defined"
+  assert:
+    that: 
+      - "{{ ahs_var }} is defined"
+      - "{{ ahs_var }} | length > 0"
+      - "{{ ahs_var }} != None"
+    fail_msg: "{{ ahs_var }} needs to be set for the role"
+    success_msg: "Required variable {{ ahs_var }} is defined"
+  loop_control:
+    loop_var: ahs_var
+  with_items:
+    - github_api_token
+    - github_organization
+
+- name: "Verify that a github team is set"
+  assert:
+    that:
+      - "github_team or github_team_id is defined"
+    fail_msg: "Either github_team or github_team_id has to be set."
+    success_msg: "Github team selection is provided OK"
+
+- name: Copy SELinux policy
+  copy:
+    src: curl-ssh-github-access.pp
+    dest: /tmp
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: Apply SELinux policy
+  ansible.builtin.shell: semodule -i /tmp/curl-ssh-github-access.pp
+  become: yes
+
+- name: "Create environment file"
+  ansible.builtin.template:
+    src: environment_file.j2
+    dest: "{{ env_file }}"
+    owner: root
+    group: wheel
+    mode: '0600'
+  become: yes
+
+- name: "Pull the docker image"
+  community.general.docker_image: 
+    name: "{{ docker_image }}:{{ docker_image_tag }}"
+    source: pull
+    state: present
+  become: yes
+
+- name: "Create container"
+  community.general.docker_container:
+    name: "{{ docker_container_name }}"
+    image: "{{ docker_image }}:{{ docker_image_tag }}"
+    volumes: "/:/host"
+    exposed_ports:
+      - "{{ listen }}"
+    ports:
+      - "{{ listen }}:{{ listen }}"
+    state: started
+    restart: yes
+    restart_policy: "unless-stopped"
+    env_file: "{{ env_file }}"
+  become: yes

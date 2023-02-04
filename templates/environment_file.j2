@@ -1,0 +1,47 @@
+GITHUB_API_TOKEN={{ github_api_token }}
+GITHUB_ORGANIZATION={{ github_organization }}
+{% if github_admin_team_name %}
+GITHUB_ADMIN_TEAM_NAME={{ github_admin_team_name }}
+{% endif %}
+{% if github_admin_team_id %}
+GITHUB_ADMIN_TEAM_ID={{ github_admin_team_id }}
+{% endif %}
+{% if github_user_team_name %}
+GITHUB_USER_TEAM_NAME={{ github_user_team_name }}
+{% endif %}
+{% if github_user_team_name %}
+GITHUB_USER_TEAM_NAME={{ github_user_team_name }}
+{% endif %}
+{% if sync_users_gid %}
+SYNC_USERS_GID={{ sync_users_gid }}
+{% endif %}
+{% if sync_users_groups %}
+SYNC_USERS_GROUPS={{ sync_users_groups }}
+{% endif %}
+{% if sync_users_shell %}
+SYNC_USERS_SHELL={{ sync_users_shell }}
+{% endif %}
+{% if sync_users_interval %}
+SYNC_USERS_INTERVAL={{ sync_users_interval }}
+{% endif %}
+{% if etcd_endpoint %}
+ETCD_ENDPOINT={{ etcd_endpoint }}
+{% endif %}
+{% if etcd_ttl %}
+ETCD_TTL={{ etcd_ttl }}
+{% endif %}
+{% if etcd_prefix %}
+ETCD_PREFIX={{ etcd_prefix }}
+{% endif %}
+{% if listen %}
+LISTEN=:{{ listen }}
+{% endif %}
+{% if integrate_ssh %}
+INTEGRATE_SSH={{ integrate_ssh }}
+{% endif %}
+{% if linux_user_add_with_gid_tpl %}
+LINUX_USER_ADD_WITH_GID_TPL={{ linux_user_add_with_gid_tpl }}
+{% endif %}
+{% if linux_user_add_tpl %}
+LINUX_USER_ADD_TPL={{ linux_user_add_tpl }}
+{% endif %}
