@@ -6,7 +6,7 @@
 
 - name: "Verify that required variables are defined"
   assert:
-    that: 
+    that:
       - "{{ ahs_var }} is defined"
       - "{{ ahs_var }} | length > 0"
       - "{{ ahs_var }} != None"
@@ -48,7 +48,7 @@
   become: yes
 
 - name: "Pull the docker image"
-  community.general.docker_image: 
+  community.general.docker_image:
     name: "{{ docker_image }}:{{ docker_image_tag }}"
     source: pull
     state: present
