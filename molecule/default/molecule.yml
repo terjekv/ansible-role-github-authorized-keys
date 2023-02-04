@@ -12,26 +12,13 @@ lint: |
   flake8
 platforms:
   - name: centos-7
-    image: "quay.io/generic/centos:7"
+    image: "ghcr.io/hspaans/molecule-container-centos:7"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: centos-8
-    image: "quay.io/generic/centos:8"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: rocky-9
-    image: "quay.io/generic/rocky:9"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
+
 provisioner:
   name: ansible
 verifier:
