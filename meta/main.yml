@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: github-authorized-keys
+#  role_name: github_authorized_keys
   author: terjekv
   description: Ansible Role for deploying github-authorized-keys from https://github.com/terjekv/github-authorized-keys
   # company: company name (optional)
