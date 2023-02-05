@@ -33,6 +33,5 @@ galaxy_info:
     - ssh
     - authorization
     - keys
-
-dependencies:
-  - role: geerlingguy.docker
+#dependencies:
+#  - role: geerlingguy.docker
