@@ -11,8 +11,15 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: centos-7
-    image: "ghcr.io/hspaans/molecule-container-centos:7"
+  - name: rocky-8
+    image: "geerlingguy/docker-rockylinux8-ansible"
+    command: ""
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  - name: rocky-9
+    image: "geerlingguy/docker-rockylinux9-ansible"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
