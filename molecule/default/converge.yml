@@ -3,9 +3,9 @@
   hosts: all
   roles:
     - {
-        role: terjekv.github_authorized_keys,
-        github_token: "{{ lookup('env','GAK_GITHUB_TOKEN') }}",
-        github_organization: "{{ lookup('env','GAK_GITHUB_ORGANIZATION') }}",
-        github_admin_team_name: "{{ lookup('env','GAK_GITHUB_ADMIN_TEAM_NAME') }}",
-        github_user_team_name: "{{ lookup('env','GAK_GITHUB_USER_TEAM_NAME') }}",
-      }
+      role: terjekv.github_authorized_keys,
+      github_token: "{{ lookup('env','GAK_GITHUB_TOKEN') }}",
+      github_organization: "{{ lookup('env','GAK_GITHUB_ORGANIZATION') }}",
+      github_admin_team_name: "{{ lookup('env','GAK_GITHUB_ADMIN_TEAM_NAME') }}",
+      github_user_team_name: "{{ lookup('env','GAK_GITHUB_USER_TEAM_NAME') }}",
+    }
