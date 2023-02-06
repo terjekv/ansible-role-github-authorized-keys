@@ -50,7 +50,11 @@ github_admin_team_name or github_admin_team_id
 ---
 - hosts: servers
   roles:
-    - { role: terjekv.github-authorized-keys, github_token: "42", github_team: "..." }
+    - { role: terjekv.github-authorized-keys,
+        github_token: "42",
+        github_admin_team_name: "ssh",
+        github_organization: "myorg",
+      }
 ````
 
 ## License
