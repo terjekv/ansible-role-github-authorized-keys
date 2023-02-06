@@ -7,6 +7,7 @@ driver:
   name: docker
 lint: |
   set -e
+  printenv GAK_GITHUB_ORGANIZATION
   yamllint `git ls-files '*.yaml' '*.yml'`
   ansible-lint
   flake8
