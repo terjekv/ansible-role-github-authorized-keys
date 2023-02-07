@@ -6,5 +6,6 @@
     github_organization: "{{ lookup('ansible.builtin.env','GAK_GITHUB_ORGANIZATION') }}"
     github_admin_team_name: "{{ lookup('ansible.builtin.env','GAK_GITHUB_ADMIN_TEAM_NAME') }}"
     github_user_team_name: "{{ lookup('ansible.builtin.env','GAK_GITHUB_USER_TEAM_NAME') }}"
+    ci_testing: "{{ lookup('ansible.builtin.env','GITHUB_ACTION') }}"
   roles:
     - terjekv.github_authorized_keys
