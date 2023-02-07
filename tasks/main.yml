@@ -4,7 +4,6 @@
   ansible.builtin.debug:
     msg:
       - CI status is {{ ci_testing }}
-      - Will bind to {{ github_organization }}
 
 - name: "Install docker via pip"
   pip:
@@ -39,14 +38,14 @@
     group: root
     mode: 0644
   become: true
-  when: ansible_os_family == 'RedHat' and not ci_testing is true
+  when: ansible_os_family == 'RedHat' and ci_testing | length == 0
 
 - name: Apply SELinux policy
   ansible.builtin.command: semodule -i /tmp/curl-ssh-github-access.pp
   become: true
   tags:
     - skip_ansible_lint
-  when: ansible_os_family == 'RedHat' and not ci_testing is true
+  when: ansible_os_family == 'RedHat' and ci_testing | length == 0
 
 - name: "Create environment file"
   ansible.builtin.template:
