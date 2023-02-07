@@ -21,8 +21,8 @@
 - name: "Verify that a github team is set"
   assert:
     that:
-      - "github_team or github_team_id is defined"
-    fail_msg: "Either github_team or github_team_id has to be set."
+      - "github_admin_team_name or github_admin_team_id is defined"
+    fail_msg: "Either github_admin_team_name or github_admin_team_id has to be set."
     success_msg: "Github team selection is provided OK"
 
 - name: Copy SELinux policy
