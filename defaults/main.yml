@@ -22,7 +22,8 @@ etcd_prefix: ""
 listen: 301
 integrate_ssh: ""
 log_level: ""
-
+linux_user_add_with_gid_tpl: ""
+linux_user_add_tpl: ""
 # GITHUB_API_TOKEN	--github-api-token	Read only GitHub API Token
 # GITHUB_ORGANIZATION	--github-organization	GitHub Organization Containing Team
 # GITHUB_ADMIN_TEAM_NAME	--github-admin-team-name	GitHub Team Name for Membership to Grant (full sudo) SSH Access
