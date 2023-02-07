@@ -62,6 +62,12 @@
     source: pull
     state: present
   become: true
+  register: result
+
+- name: Debug docker pull result
+  debug:
+    msg:
+      - "{{ result }}"
 
 - name: "Create container"
   community.general.docker_container:
