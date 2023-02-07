@@ -3,6 +3,16 @@
   hosts: all
 
   pre_tasks:
+    - name: Create docker.sock
+      raw: touch /var/run/docker.sock
+      become: true
+      changed_when: false
+
+    - name: Move docker.sock from tmp
+      raw: mount --move /tmp/docker.sock /var/run/docker.sock
+      become: true
+      changed_when: false
+
     - name: Update apt cache (on Debian).
       apt:
         update_cache: true

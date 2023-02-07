@@ -16,6 +16,7 @@ platforms:
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/tmp/docker.sock
     privileged: true
     pre_build_image: true
   - name: centos8
@@ -23,6 +24,7 @@ platforms:
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/tmp/docker.sock
     privileged: true
     pre_build_image: true
 
