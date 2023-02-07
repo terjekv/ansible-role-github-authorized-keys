@@ -56,20 +56,20 @@
     mode: "0600"
   become: true
 
-- name: "Pull the docker image"
-  community.general.docker_image:
-    name: "{{ docker_image }}:{{ docker_image_tag }}"
-    source: pull
-    state: present
-  become: true
-  register: result
+# - name: "Pull the docker image"
+#  community.general.docker_image:
+#    name: "{{ docker_image }}:{{ docker_image_tag }}"
+#    source: pull
+#    state: present
+#  become: true
+#  register: result
 
-- name: Debug docker pull result
-  debug:
-    msg:
-      - "{{ result }}"
+# - name: Debug docker pull result
+#  debug:
+#    msg:
+#      - "{{ result }}"
 
-- name: "Create container"
+- name: "Pull and start container"
   community.general.docker_container:
     name: "{{ docker_container_name }}"
     image: "{{ docker_image }}:{{ docker_image_tag }}"
@@ -80,6 +80,7 @@
       - "{{ listen }}:{{ listen }}"
     state: started
     restart: yes
+    pull: true
     restart_policy: "unless-stopped"
     env_file: "{{ env_file }}"
   become: true
