@@ -22,21 +22,22 @@ etcd_prefix: ""
 listen: 301
 integrate_ssh: ""
 log_level: ""
-
-# GITHUB_API_TOKEN	--github-api-token	GitHub API Token (read-only)	
-# GITHUB_ORGANIZATION	--github-organization	GitHub Organization Containing Team	
-# GITHUB_ADMIN_TEAM_NAME	--github-admin-team-name	GitHub Team Name for Membership to Grant (full sudo) SSH Access	
-# GITHUB_ADMIN_TEAM_ID	--github-admin-team-id	GitHub Team ID for Membership to Grant admin (full sudo) SSH Access	
-# GITHUB_USER_TEAM_NAME	--github-user-team-name	GitHub Team Name for Membership to Grant user (no sudo) SSH Access	
-# GITHUB_USER_TEAM_ID	--github-user-team-id	GitHub Team ID for Membership to Grant user (no sudo) SSH Access	
-# SYNC_USERS_GID	--sync-users-gid	Default Group ID (aka gid) of users	
-# SYNC_USERS_GROUPS	--sync-users-groups	Default "Extra" Groups	
-# SYNC_USERS_SHELL	--sync-users-shell	Default Login Shell	/bin/bash
-# SYNC_USERS_ROOT	--sync-users-root	chroot path for user commands	/
-# SYNC_USERS_INTERVAL	--sync-users-interval	Interval used to update user accounts	300
-# ETCD_ENDPOINT	--etcd-endpoint	Etcd endpoint used for caching public keys	
-# ETCD_TTL	--etcd-ttl	Duration (in seconds) to cache public keys	86400
-# ETCD_PREFIX	--etcd-prefix	Prefix for public keys stored in etcd	github-authorized-keys
-# LISTEN	--listen	Bind address used for REST API	:301
-# INTEGRATE_SSH	--integrate-ssh	Flag to automatically configure SSH	false
-# LOG_LEVEL	--log-level	Ccontrol the logging verbosity.	info
+linux_user_add_with_gid_tpl: ""
+linux_user_add_tpl: ""
+# GITHUB_API_TOKEN	--github-api-token	Read only GitHub API Token
+# GITHUB_ORGANIZATION	--github-organization	GitHub Organization Containing Team
+# GITHUB_ADMIN_TEAM_NAME	--github-admin-team-name	GitHub Team Name for Membership to Grant (full sudo) SSH Access
+# GITHUB_ADMIN_TEAM_ID	--github-admin-team-id	GitHub Team ID for Membership to Grant admin (full sudo) SSH Access
+# GITHUB_USER_TEAM_NAME	--github-user-team-name	GitHub Team Name for Membership to Grant user (no sudo) SSH Access
+# GITHUB_USER_TEAM_ID	--github-user-team-id	GitHub Team ID for Membership to Grant user (no sudo) SSH Access
+# SYNC_USERS_GID	--sync-users-gid	Default Group ID (aka gid) of users
+# SYNC_USERS_GROUPS	--sync-users-groups	Default "Extra" Groups
+# SYNC_USERS_SHELL	--sync-users-shell	Default Login Shell (/bin/bash)
+# SYNC_USERS_ROOT	--sync-users-root	chroot path for user commands (/)
+# SYNC_USERS_INTERVAL	--sync-users-interval	Interval used to update user accounts (300)
+# ETCD_ENDPOINT	--etcd-endpoint	Etcd endpoint used for caching public keys
+# ETCD_TTL	--etcd-ttl	Duration (in seconds) to cache public keys (86400)
+# ETCD_PREFIX	--etcd-prefix	Prefix for public keys stored in etcd (github-authorized-keys)
+# LISTEN	--listen	Bind address used for REST API (:301)
+# INTEGRATE_SSH	--integrate-ssh	Flag to automatically configure SSH	(false)
+# LOG_LEVEL	--log-level	Control the logging verbosity (info)

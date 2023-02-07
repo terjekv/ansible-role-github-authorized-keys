@@ -1,6 +1,8 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: molecule/default/requirements.yml
 driver:
   name: docker
 lint: |
@@ -9,69 +11,23 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: centos-7
-    image: "ghcr.io/hspaans/molecule-container-centos:7"
+  - name: centos7
+    image: "geerlingguy/docker-centos7-ansible:latest"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/tmp/docker.sock
     privileged: true
     pre_build_image: true
-  - name: centos-8
-    image: "ghcr.io/hspaans/molecule-container-centos:8"
+  - name: centos8
+    image: "geerlingguy/docker-centos8-ansible:latest"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/tmp/docker.sock
     privileged: true
     pre_build_image: true
-  - name: centos-9
-    image: "ghcr.io/hspaans/molecule-container-centos:9"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: debian-10
-    image: "ghcr.io/hspaans/molecule-container-debian:10"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: debian-11
-    image: "ghcr.io/hspaans/molecule-container-debian:11"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: fedora-33
-    image: "ghcr.io/hspaans/molecule-container-fedora:33"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: fedora-34
-    image: "ghcr.io/hspaans/molecule-container-fedora:34"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: ubuntu-18.04
-    image: "ghcr.io/hspaans/molecule-container-ubuntu:18.04"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: ubuntu-20.04
-    image: "ghcr.io/hspaans/molecule-container-ubuntu:20.04"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
+
 provisioner:
   name: ansible
 verifier:

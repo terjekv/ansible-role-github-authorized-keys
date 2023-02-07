@@ -4,10 +4,9 @@ name: CI
 on:
   pull_request:
   schedule:
-    - cron: '3 7 17 * *'
+    - cron: "3 7 17 * *"
 
 jobs:
-
   lint:
     name: Lint Code Base
     runs-on: ubuntu-latest
@@ -44,3 +43,7 @@ jobs:
         env:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
+          GAK_GITHUB_API_TOKEN: ${{ secrets.GAK_GITHUB_API_TOKEN }}
+          GAK_GITHUB_ORGANIZATION: ${{ secrets.GAK_GITHUB_ORGANIZATION }}
+          GAK_GITHUB_ADMIN_TEAM_NAME: ${{ secrets.GAK_GITHUB_ADMIN_TEAM_NAME }}
+          GAK_GITHUB_USER_TEAM_NAME: ${{ secrets.GAK_GITHUB_USER_TEAM_NAME }}

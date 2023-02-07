@@ -1,12 +1,17 @@
 ---
 # tasks file for role
+- name: Debug environment
+  ansible.builtin.debug:
+    msg:
+      - CI status is {{ ci_testing }}
+
 - name: "Install docker via pip"
   pip:
     name: "docker"
 
 - name: "Verify that required variables are defined"
   assert:
-    that: 
+    that:
       - "{{ ahs_var }} is defined"
       - "{{ ahs_var }} | length > 0"
       - "{{ ahs_var }} != None"
@@ -21,8 +26,8 @@
 - name: "Verify that a github team is set"
   assert:
     that:
-      - "github_team or github_team_id is defined"
-    fail_msg: "Either github_team or github_team_id has to be set."
+      - "github_admin_team_name or github_admin_team_id is defined"
+    fail_msg: "Either github_admin_team_name or github_admin_team_id has to be set."
     success_msg: "Github team selection is provided OK"
 
 - name: Copy SELinux policy
@@ -32,11 +37,15 @@
     owner: root
     group: root
     mode: 0644
-  become: yes
+  become: true
+  when: ansible_os_family == 'RedHat' and ci_testing | length == 0
 
 - name: Apply SELinux policy
-  ansible.builtin.shell: semodule -i /tmp/curl-ssh-github-access.pp
-  become: yes
+  ansible.builtin.command: semodule -i /tmp/curl-ssh-github-access.pp
+  become: true
+  tags:
+    - skip_ansible_lint
+  when: ansible_os_family == 'RedHat' and ci_testing | length == 0
 
 - name: "Create environment file"
   ansible.builtin.template:
@@ -44,17 +53,23 @@
     dest: "{{ env_file }}"
     owner: root
     group: wheel
-    mode: '0600'
-  become: yes
+    mode: "0600"
+  become: true
 
 - name: "Pull the docker image"
-  community.general.docker_image: 
+  community.general.docker_image:
     name: "{{ docker_image }}:{{ docker_image_tag }}"
     source: pull
     state: present
-  become: yes
+  become: true
+  register: result
 
-- name: "Create container"
+- name: Debug docker pull result
+  debug:
+    msg:
+      - "{{ result }}"
+
+- name: "Pull and start container"
   community.general.docker_container:
     name: "{{ docker_container_name }}"
     image: "{{ docker_image }}:{{ docker_image_tag }}"
@@ -64,7 +79,7 @@
     ports:
       - "{{ listen }}:{{ listen }}"
     state: started
-    restart: yes
+    restart: no
     restart_policy: "unless-stopped"
     env_file: "{{ env_file }}"
-  become: yes
+  become: true
