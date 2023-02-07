@@ -15,7 +15,8 @@
       when: ansible_os_family == 'RedHat'
 
   tasks:
-    - name: Remove packages
+    - name: Ensure policycoreutils is available if required.
       package:
-        name: git
-        state: absent
+        name: policycoreutils
+        state: present
+      when: ansible_os_family == 'RedHat'
