@@ -25,7 +25,7 @@ provisioner:
   config_options:
     defaults:
       remote_tmp: /var/tmp
-      ansible_docker_user: centos
+      ansible_user: centos
   env:
     ANSIBLE_VERBOSITY: 3
 verifier:
