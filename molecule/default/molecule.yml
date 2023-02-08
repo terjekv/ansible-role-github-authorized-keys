@@ -17,14 +17,12 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/run/docker.sock:/tmp/docker.sock
-      - /var/tmp:/var/tmp
     privileged: true
     pre_build_image: false
 
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      remote_tmp: /var/tmp
+  env:
+    ANSIBLE_VERBOSITY: 3
 verifier:
   name: testinfra
