@@ -12,21 +12,13 @@ lint: |
   flake8
 platforms:
   - name: centos7
-    image: "geerlingguy/docker-centos7-ansible:latest"
+    image: "centos:centos7"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/run/docker.sock:/tmp/docker.sock
     privileged: true
-    pre_build_image: true
-  - name: centos8
-    image: "geerlingguy/docker-centos8-ansible:latest"
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /var/run/docker.sock:/tmp/docker.sock
-    privileged: true
-    pre_build_image: true
+    pre_build_image: false
 
 provisioner:
   name: ansible
