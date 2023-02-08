@@ -22,6 +22,9 @@ platforms:
 
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      remote_tmp: /var/tmp
   env:
     ANSIBLE_VERBOSITY: 3
 verifier:
